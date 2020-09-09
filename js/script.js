@@ -9,7 +9,7 @@ $( document ).ready(function() {
 
     $(document).keydown(function(e) {
        if (e.keycode == 13 || e.which == 13) {
-           $('.lista').empty();
+           // $('.lista').empty();
            var inputUtente = $('#user').val();
            aggiungiInput(inputUtente);
            richiama();
@@ -35,11 +35,14 @@ $( document ).ready(function() {
    $(document).keydown(function(e) {
         if (e.keycode == 13 || e.which == 13) {
             $('.lista').empty();
-            var newInput = $('#id-input').val();
-            modifica(newInput);
-            // richiama();
+            var newInput = $('input#id-input.modify').val();
+            console.log(newInput);
+            var nuovo = $(this).parent().attr('data-id');
+            console.log(nuovo);
+            // modifica(newInput, nuovo);
         }
     });
+
 });
 
 //******FUNZIONI
@@ -103,27 +106,18 @@ function elimina(id) {
     )
 }
 
-function modifica(n) {
+function modifica(risposta, id) {
     $.ajax(
         {
-            url: 'http://157.230.17.132:3032/todos',
-            method:'PATCH',
+            url: 'http://157.230.17.132:3032/todos' + '/' + id,
+            method:'PUT',
             data: {
-                text: n
+                text: risposta
             },
             success: function(data) {
-                var source = $("#entry-template").html();
-                var template = Handlebars.compile(source);
-                for (var i = 0; i < data.length; i++) {
-                    var context = {
-                        text: data[i].text,
-                        id: data[i].id
-                    }
-                    //console.log(context);
-                    var html = template(context);
+                    // $('.lista').empty();
                     $('.lista').append(html);
-                }
-            },
+                },
             error: function(){
                 alert('Errore');
             }
