@@ -10,11 +10,11 @@
     clear: both;
 }
 
-input, ol {
+#user, ol {
     margin: 20px 0 0 40px;
 }
 
-input {
+#user {
     float: left;
 }
 
@@ -25,6 +25,10 @@ button {
 span {
     color: red;
     cursor: pointer;
+}
+
+.testo {
+    color: black;
 }
 
 .hide {

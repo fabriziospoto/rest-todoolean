@@ -10,7 +10,7 @@
     </head>
     <body>
 
-        <input type="text" name="" value="">
+        <input id="user" type="text" name="" value="">
         <button id="aggiungi" type="button" name="button">Aggiungi</button>
 
         <ol class="lista">
@@ -18,8 +18,9 @@
         </ol>
 
         <script id="entry-template" type="text/x-handlebars-template">
-                <li data-id={{id}}>{{text}}<span id="elimina"> X</span></li>
-                <input type="text" class="hide" name="" value="">
+            <div class="voce-lista">
+                <li data-id={{id}}><span class="testo">{{text}}</span><input id="id-input" class="modify hide" type="text" name="" value=""><span id="elimina"> X</span></li>
+            </div>
         </script>
 
         <script src="js/script.js" charset="utf-8"></script>
