@@ -9,3 +9,20 @@
     content: '';
     clear: both;
 }
+
+input, ol {
+    margin: 20px 0 0 40px;
+}
+
+input {
+    float: left;
+}
+
+button {
+    margin: 20px 0 0 20px;
+}
+
+span {
+    color: red;
+    cursor: pointer;
+}
