@@ -60,7 +60,6 @@ function aggiungiInput(val) {
             },
             success: function() {
                 $('.lista').html();
-                console.log();
             },
             error: function(){
                 alert('Errore');
@@ -72,7 +71,7 @@ function aggiungiInput(val) {
 function elimina(id) {
     $.ajax(
         {
-            url: 'http://157.230.17.132:3032/todos' + id,
+            url: 'http://157.230.17.132:3032/todos' + '/' + id,
             method:'DELETE',
             success: function(risposta) {
                 $('.lista').html(' ');

@@ -26,3 +26,7 @@ span {
     color: red;
     cursor: pointer;
 }
+
+.hide {
+    display: none;
+}
