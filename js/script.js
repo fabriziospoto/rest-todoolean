@@ -24,6 +24,9 @@ $( document ).ready(function() {
    });
 
    $(document).on('click', '.voce-lista', function(){
+       // $('.testo').removeClass('hide');
+       // $('.testo').next().addClass('hide');
+
        var inputModify = $(this).find('.modify');
        var testoVoce = $(this).find('.testo');
 
@@ -32,14 +35,12 @@ $( document ).ready(function() {
 
    });
 
-   $(document).keydown(function(e) {
-        if (e.keycode == 13 || e.which == 13) {
-            $('.lista').empty();
-            var newInput = $('input#id-input.modify').val();
-            console.log(newInput);
-            var nuovo = $(this).parent().attr('data-id');
-            console.log(nuovo);
-            // modifica(newInput, nuovo);
+    $(document).on('keydown', '#id-input', function(){
+        var idNewElement = $(this).parent().attr('data-id');
+        if (event.which == 13 || event.keyCode == 13) {
+            console.log(idNewElement);
+            var newElement = $(this).val();
+            modifica(idNewElement, newElement);
         }
     });
 
@@ -106,17 +107,17 @@ function elimina(id) {
     )
 }
 
-function modifica(risposta, id) {
+function modifica(id, elemento) {
     $.ajax(
         {
             url: 'http://157.230.17.132:3032/todos' + '/' + id,
-            method:'PUT',
+            method: 'PUT',
             data: {
-                text: risposta
+                text: elemento
             },
             success: function(data) {
-                    // $('.lista').empty();
-                    $('.lista').append(html);
+                    $('.lista').empty();
+                    richiama();
                 },
             error: function(){
                 alert('Errore');
